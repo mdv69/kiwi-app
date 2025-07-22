@@ -1,74 +1,73 @@
 body {
   font-family: sans-serif;
-  background: #f9fdfb;
+  background: linear-gradient(to bottom, #ffafcc, #ffffff);
   margin: 0;
   padding: 0;
-  color: #2d2d2d;
 }
 
-header {
-  background: linear-gradient(to right, #29b6f6, #66bb6a);
-  color: white;
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-main {
-  padding: 2rem;
-  max-width: 1000px;
+.container {
+  max-width: 700px;
   margin: auto;
+  padding: 20px;
 }
 
-section {
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: white;
   margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
-.card {
+.section {
   background: white;
-  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
   border-radius: 12px;
-  padding: 1rem;
-  flex: 1 1 300px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px #ccc;
+}
+
+.clock-box, .mood-box {
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(to right, #ff70a6, #ff9770);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .time {
-  font-size: 2rem;
-  color: #2e7d32;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.date, .tz {
-  color: #757575;
+ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-.mood-buttons button {
-  margin: 0.25rem;
-}
-
-button, textarea, input {
-  display: block;
-  width: 100%;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button.submit {
-  background: linear-gradient(to right, #29b6f6, #1976d2);
-  color: white;
-  border: none;
-}
-
-button.add {
-  background: #66bb6a;
-  color: white;
-  width: 100%;
-  font-size: 1.2rem;
-  margin-top: 1rem;
+ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
 }
