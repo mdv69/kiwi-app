@@ -3,59 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>♡ Together Apart ♡</title>
-  <link rel="manifest" href="manifest.json" />
+  <title>Kiwi</title>
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.33/builds/moment-timezone-with-data.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>♡ Together Apart ♡</h1>
-    <p class="subtitle">Bridging hearts across the distance</p>
+  <header>
+    <h1>Kiwi</h1>
+  </header>
 
-    <section>
-      <h2>🌐 Our Time Zones</h2>
-      <div class="time-cards">
-        <div class="time-card">
-          <h3>You</h3>
-          <div id="time-you"></div>
-          <div class="timezone">New York (EST)</div>
+  <main>
+    <section class="timezones">
+      <div class="card">
+        <h2>💓 Vous</h2>
+        <div class="time" id="local-time">--:--</div>
+        <div class="date" id="local-date">--</div>
+        <div class="tz" id="local-tz">--</div>
+      </div>
+      <div class="card">
+        <h2>🕒 Votre Partenaire</h2>
+        <div class="time" id="partner-time">--:--</div>
+        <div class="date" id="partner-date">--</div>
+        <div class="tz" id="partner-tz">--</div>
+      </div>
+    </section>
+
+    <section class="mood-journal">
+      <div class="card">
+        <h2>💚 Mood Ping</h2>
+        <p>How are you feeling right now?</p>
+        <div class="mood-buttons">
+          <button>In Love</button>
+          <button>Happy</button>
+          <button>Neutral</button>
+          <button>Sad</button>
+          <button>Upset</button>
         </div>
-        <div class="time-card">
-          <h3>Your Partner</h3>
-          <div id="time-partner"></div>
-          <div class="timezone">London (GMT)</div>
+        <textarea placeholder="Add a note about your mood (optional)..."></textarea>
+        <button class="submit">Send Mood Ping</button>
+      </div>
+
+      <div class="card">
+        <h2>📓 Journal Personnel</h2>
+        <input type="text" placeholder="Donnez un titre à votre entrée (optionnel)..." />
+        <textarea placeholder="Que ressentez-vous aujourd’hui ? Comment ça se passe avec votre partenaire ? Écrivez sur votre journée, vos émotions, vos rêves…"></textarea>
+        <div class="actions">
+          <button>📷 Ajouter des photos</button>
+          <button class="submit">💾 Sauvegarder</button>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>♡ Mood Ping</h2>
-      <div id="mood-options">
-        ❤️ 😊 😐 😞 ❌
-      </div>
-      <input type="text" id="mood-note" placeholder="Add a note (optional)" />
-      <button onclick="sendMood()">📩 Send Mood Ping</button>
+    <section class="rules card">
+      <h2>👫 Nos règles de couple</h2>
+      <ul id="rules-list">
+        <li>Always say good morning and good night</li>
+        <li>Video call at least 3 times a week</li>
+        <li>Share one highlight from our day</li>
+      </ul>
+      <input type="text" placeholder="Add a new rule for your relationship..." />
+      <button class="add">+</button>
     </section>
-
-    <section>
-      <h2>📗 Personal Journal</h2>
-      <p class="small-date" id="current-date"></p>
-      <input type="text" id="journal-title" placeholder="Title (optional)" />
-      <textarea id="journal-text" placeholder="Write about your day..."></textarea>
-      <button onclick="saveJournal()">📃 Save Entry</button>
-    </section>
-
-    <section>
-      <h2>👫 Our Couple Rules</h2>
-      <ul id="rules-list"></ul>
-      <div class="rule-add">
-        <input type="text" id="new-rule" placeholder="Add a new rule..." />
-        <button onclick="addRule()">+</button>
-      </div>
-    </section>
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
