@@ -3,34 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff" />
+  <title>♡ Together Apart ♡</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <title>Distance Hearts</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
       margin: 0;
-      padding: 2rem;
+      font-family: sans-serif;
+      background: linear-gradient(to bottom, #ec4899, white);
+      padding: 1rem;
     }
-    h1 {
-      color: #4c4c4c;
+
+    h1, h2, h3 {
+      text-align: center;
+      color: white;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .time {
+      font-size: 2em;
+      color: #ec4899;
+      font-weight: bold;
+    }
+
+    .mood-button {
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .mood-button.selected {
+      background-color: #f9a8d4;
+      border-color: #ec4899;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      background: linear-gradient(to right, #ec4899, #a855f7);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Distance Hearts Journal 💕</h1>
-  <p>This is a super simple PWA demo.</p>
+  <h1>♡ Together Apart ♡</h1>
+  <p style="text-align:center; color:white;">Bridging hearts across the distance</p>
+
+  <div class="card">
+    <h2>🌐 Our Time Zones</h2>
+    <div style="display:flex; justify-content: space-around;">
+      <div>
+        <h3>⏰ You</h3>
+        <div class="time" id="timeYou"></div>
+        <p>New York</p>
+      </div>
+      <div>
+        <h3>⏰ Partner</h3>
+        <div class="time" id="timePartner"></div>
+        <p>London</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>♡ Mood Ping</h2>
+    <div id="moods"></div>
+    <textarea placeholder="Add a note about your mood (optional)..." id="moodNote"></textarea>
+    <button onclick="sendMood()">📩 Send Mood Ping</button>
+  </div>
+
+  <div class="card">
+    <h2>📗 Personal Journal</h2>
+    <p id="todayDate"></p>
+    <input placeholder="Give your entry a title (optional)..." id="journalTitle" />
+    <textarea placeholder="What’s on your mind today?" id="journalEntry"></textarea>
+    <button onclick="saveJournal()">📃 Save Entry</button>
+  </div>
+
+  <div class="card">
+    <h2>👫 Our Couple Rules</h2>
+    <ul id="rulesList"></ul>
+    <input placeholder="Add a new rule..." id="newRule" />
+    <button onclick="addRule()">➕ Add Rule</button>
+  </div>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').then(() => {
-        console.log("✅ Service Worker registered!");
-      }).catch(err => {
-        console.error("❌ Service Worker error:", err);
-      });
+    const moods = ["❤️ In Love", "😊 Happy", "😐 Neutral", "😞 Sad", "❌ Upset"];
+    let selectedMood = "";
+
+    function updateClocks() {
+      const now = new Date();
+      document.getElementById("timeYou").textContent = now.toLocaleTimeString("en-US", { timeZone: "America/New_York" });
+      document.getElementById("timePartner").textContent = now.toLocaleTimeString("en-US", { timeZone: "Europe/London" });
     }
+
+    setInterval(updateClocks, 1000);
+    updateClocks();
+
+    const moodContainer = document.getElementById("moods");
+    moods.forEach(mood => {
+      const btn = document.createElement("button");
+      btn.textContent = mood;
+      btn.className = "mood-button";
+      btn.onclick = () => {
+        selectedMood = mood;
+        document.querySelectorAll(".mood-button").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      };
+      moodContainer.appendChild(btn);
+    });
+
+    function sendMood() {
+      alert("Mood sent: " + selectedMood + "\nNote: " + document.getElementById("moodNote").value);
+    }
+
+    function saveJournal() {
+      alert("Journal saved: " + document.getElementById("journalTitle").value);
+    }
+
+    function addRule() {
+      const ruleText = document.getElementById("newRule").value.trim();
+      if (ruleText) {
+        const li = document.createElement("li");
+        li.textContent = ruleText;
+        document.getElementById("rulesList").appendChild(li);
+        document.getElementById("newRule").value = "";
+      }
+    }
+
+    document.getElementById("todayDate").textContent = new Date().toDateString();
   </script>
 </body>
 </html>
