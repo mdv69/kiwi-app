@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <title>Distance Hearts</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 2rem;
+{
+  "name": "Together Apart",
+  "short_name": "Together",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ec4899",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-    h1 {
-      color: #4c4c4c;
-    }
-  </style>
-</head>
-<body>
-  <h1>Welcome to Distance Hearts Journal 💕</h1>
-  <p>This is a super simple PWA demo.</p>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').then(() => {
-        console.log("✅ Service Worker registered!");
-      }).catch(err => {
-        console.error("❌ Service Worker error:", err);
-      });
-    }
-  </script>
-</body>
-</html>
+  ]
+}
